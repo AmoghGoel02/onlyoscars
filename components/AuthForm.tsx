@@ -18,7 +18,7 @@ const router = useRouter();
 const{
   register,
   handleSubmit,
-  formState:{errors},
+  formState: {errors},
 } = useForm<FormData>({
   defaultValues:
   type === "register" 
@@ -27,7 +27,7 @@ const{
 })
 
 const onSubmit: SubmitHandler<FormData>= async(data) =>{
-  let res
+  let res;
   if(type === "register"){
     res = await fetch("/api/auth/register",{
       method:"POST",
@@ -35,10 +35,10 @@ const onSubmit: SubmitHandler<FormData>= async(data) =>{
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
 
     if(res.ok){
-      router.push("/login")
+      router.push("/login");
     } else{
       toast.error("Something went wrong");
     }
